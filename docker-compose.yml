@@ -1,0 +1,17 @@
+version: "3.5"
+
+services:
+  app:
+    build: .
+    container_name: sklad_django_app
+    restart: always
+    command:
+      "gunicorn --workers=2 --bind=0.0.0.0:8000 sklad.wsgi:application"
+
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    external:
+      name: frontend
