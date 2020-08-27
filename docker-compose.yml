@@ -1,17 +1,24 @@
 version: "3.5"
 
+networks:
+  sklad:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.30.30.0/24
+
 services:
   app:
     build: .
-    container_name: sklad_django_app
+    container_name: sklad-app
     restart: always
+    ports:
+      - "6363:6363"
+    volumes:
+      - ./nginx/static:/sklad/app/sklad_app/static
     command:
-      "gunicorn --workers=2 --bind=0.0.0.0:8000 sklad.wsgi:application"
-
+      "gunicorn --workers=2 --bind=0.0.0.0:6363 sklad.wsgi:application"
     networks:
-      - frontend
-
-networks:
-  frontend:
-    external:
-      name: frontend
+      sklad:
+        ipv4_address: 172.30.30.11

@@ -25,7 +25,7 @@ SECRET_KEY = '*x0b%x&5ufwawb$#@w%m_%ea3ypb1lpc1bw-htpm9d_psfvm!b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['172.30.30.11']
 
 
 # Application definition
@@ -131,4 +131,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = 'sklad_app/static/'
+STATIC_ROOT = '/var/www/sklad'

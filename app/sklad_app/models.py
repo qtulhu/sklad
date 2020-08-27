@@ -10,6 +10,7 @@ class sklad_item(models.Model):
         (registrator, 'Регистратор'),
         (camera, 'Камера'),
         (injector, 'Инжектор'),
+        (injector, 'Коммутатор'),
     )
     status_choices = (
         (on_base, 'На складе'),
